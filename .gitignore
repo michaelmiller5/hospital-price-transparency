@@ -1,0 +1,10 @@
+# Raw hospital files are 15 MB to 3.3 GB each; download them from the links in the README.
+data/raw/
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+*.wal

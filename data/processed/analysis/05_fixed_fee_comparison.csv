@@ -1,0 +1,50 @@
+procedure_code,procedure_label,hospital_name,n_contracts,median_price,x_lowest
+27447,"Knee replacement, outpatient",Crouse Hospital,4,31192.83,1.22
+27447,"Knee replacement, outpatient",Highland Hospital,5,25633.03,1.0
+27447,"Knee replacement, outpatient",St. Joseph's Hospital Health Center,4,34592.81,1.35
+27447,"Knee replacement, outpatient",Strong Memorial Hospital,5,30103.23,1.17
+27447,"Knee replacement, outpatient",Upstate University Hospital,4,38238.78,1.49
+43239,Upper GI endoscopy with biopsy,Crouse Hospital,4,2203.61,1.15
+43239,Upper GI endoscopy with biopsy,Highland Hospital,7,1922.78,1.0
+43239,Upper GI endoscopy with biopsy,St. Joseph's Hospital Health Center,4,2471.88,1.29
+43239,Upper GI endoscopy with biopsy,Strong Memorial Hospital,9,2242.65,1.17
+43239,Upper GI endoscopy with biopsy,Upstate University Hospital,4,2786.32,1.45
+45378,"Colonoscopy, diagnostic",Crouse Hospital,4,2259.42,1.15
+45378,"Colonoscopy, diagnostic",Highland Hospital,7,1971.48,1.0
+45378,"Colonoscopy, diagnostic",St. Joseph's Hospital Health Center,4,2534.49,1.29
+45378,"Colonoscopy, diagnostic",Strong Memorial Hospital,9,2299.45,1.17
+45378,"Colonoscopy, diagnostic",Upstate University Hospital,4,2709.5,1.37
+70450,"CT head, no contrast",Crouse Hospital,7,234.37,1.0
+70450,"CT head, no contrast",Highland Hospital,9,244.26,1.04
+70450,"CT head, no contrast",St. Joseph's Hospital Health Center,3,284.93,1.22
+70450,"CT head, no contrast",Strong Memorial Hospital,10,308.42,1.32
+70450,"CT head, no contrast",Upstate University Hospital,4,316.03,1.35
+70551,"MRI brain, no contrast",Crouse Hospital,6,534.9,1.0
+70551,"MRI brain, no contrast",Highland Hospital,9,555.23,1.04
+70551,"MRI brain, no contrast",St. Joseph's Hospital Health Center,3,650.28,1.22
+70551,"MRI brain, no contrast",Strong Memorial Hospital,10,683.62,1.28
+70551,"MRI brain, no contrast",Upstate University Hospital,4,718.36,1.34
+72148,"MRI lower back, no contrast",Crouse Hospital,6,534.9,1.0
+72148,"MRI lower back, no contrast",Highland Hospital,9,555.23,1.04
+72148,"MRI lower back, no contrast",St. Joseph's Hospital Health Center,3,650.28,1.22
+72148,"MRI lower back, no contrast",Strong Memorial Hospital,10,666.66,1.25
+72148,"MRI lower back, no contrast",Upstate University Hospital,4,718.36,1.34
+73721,"MRI knee/leg joint, no contrast",Crouse Hospital,6,534.9,1.0
+73721,"MRI knee/leg joint, no contrast",Highland Hospital,9,555.23,1.04
+73721,"MRI knee/leg joint, no contrast",St. Joseph's Hospital Health Center,3,650.28,1.22
+73721,"MRI knee/leg joint, no contrast",Strong Memorial Hospital,10,702.26,1.31
+73721,"MRI knee/leg joint, no contrast",Upstate University Hospital,4,718.36,1.34
+74177,"CT abdomen and pelvis, with contrast",Crouse Hospital,7,782.1,1.0
+74177,"CT abdomen and pelvis, with contrast",Highland Hospital,9,820.33,1.05
+74177,"CT abdomen and pelvis, with contrast",St. Joseph's Hospital Health Center,3,950.81,1.22
+74177,"CT abdomen and pelvis, with contrast",Strong Memorial Hospital,10,1033.04,1.32
+74177,"CT abdomen and pelvis, with contrast",Upstate University Hospital,4,1061.34,1.36
+77067,Screening mammogram,Crouse Hospital,6,178.68,1.0
+77067,Screening mammogram,Highland Hospital,4,449.17,2.51
+77067,Screening mammogram,St. Joseph's Hospital Health Center,1,184.65,1.03
+77067,Screening mammogram,Strong Memorial Hospital,5,449.17,2.51
+DRG470,"Hip or knee replacement, inpatient stay (MS-DRG 470)",Crouse Hospital,6,34747.37,1.58
+DRG470,"Hip or knee replacement, inpatient stay (MS-DRG 470)",Highland Hospital,2,21988.84,1.0
+DRG470,"Hip or knee replacement, inpatient stay (MS-DRG 470)",St. Joseph's Hospital Health Center,3,33115.36,1.51
+DRG470,"Hip or knee replacement, inpatient stay (MS-DRG 470)",Strong Memorial Hospital,2,33487.63,1.52
+DRG470,"Hip or knee replacement, inpatient stay (MS-DRG 470)",Upstate University Hospital,5,45949.68,2.09

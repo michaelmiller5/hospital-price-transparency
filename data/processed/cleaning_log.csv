@@ -1,0 +1,25 @@
+hospital_key,exclusion_reason,rows
+crouse,,357
+crouse,"billing modifier variant, not the base service",1584
+crouse,duplicate of a rate already counted,448
+crouse,no dollar amount (percentage or formula only),89
+highland,,392
+highland,duplicate of a rate already counted,20
+highland,no dollar amount (percentage or formula only),51
+highland,no payer (gross or cash price line),39
+rochester_general,"hospital is the transparency-gap finding, not in head-to-head",64
+st_josephs,,351
+st_josephs,behavioral-health carve-out contract,10
+st_josephs,"billing modifier variant, not the base service",920
+st_josephs,duplicate of a rate already counted,1202
+st_josephs,"professional (physician) fee, not hospital facility fee",11155
+strong,,390
+strong,duplicate of a rate already counted,8
+strong,no dollar amount (percentage or formula only),51
+strong,no payer (gross or cash price line),124
+strong,"professional (physician) fee, not hospital facility fee",679
+upstate,,215
+upstate,care setting does not match the procedure definition,16
+upstate,duplicate of a rate already counted,63
+upstate,no dollar amount (percentage or formula only),11
+upstate,"professional (physician) fee, not hospital facility fee",6

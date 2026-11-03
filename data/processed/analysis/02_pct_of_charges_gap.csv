@@ -1,0 +1,13 @@
+hospital_name,procedure_code,n_pct,n_fixed,median_pct,median_fixed,ratio
+St. Joseph's Hospital Health Center,70450,11,3,998.86,284.93,3.51
+St. Joseph's Hospital Health Center,70551,11,3,1697.41,650.28,2.61
+St. Joseph's Hospital Health Center,72148,10,3,1711.66,650.28,2.63
+St. Joseph's Hospital Health Center,73721,11,3,1905.84,650.28,2.93
+St. Joseph's Hospital Health Center,74177,11,3,2348.06,950.81,2.47
+St. Joseph's Hospital Health Center,77067,11,1,343.92,184.65,1.86
+Upstate University Hospital,43239,8,4,1168.22,2786.32,0.42
+Upstate University Hospital,70450,8,4,2363.21,316.03,7.48
+Upstate University Hospital,70551,8,4,4062.44,718.36,5.66
+Upstate University Hospital,72148,8,4,4062.44,718.36,5.66
+Upstate University Hospital,73721,8,4,5055.88,718.36,7.04
+Upstate University Hospital,74177,8,4,2742.3,1061.34,2.58

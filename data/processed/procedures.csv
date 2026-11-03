@@ -1,0 +1,11 @@
+procedure_code,label,category,code_type
+70551,"MRI brain, no contrast",Imaging,CPT
+73721,"MRI knee/leg joint, no contrast",Imaging,CPT
+72148,"MRI lower back, no contrast",Imaging,CPT
+70450,"CT head, no contrast",Imaging,CPT
+74177,"CT abdomen and pelvis, with contrast",Imaging,CPT
+77067,Screening mammogram,Imaging,CPT
+45378,"Colonoscopy, diagnostic",Procedure,CPT
+43239,Upper GI endoscopy with biopsy,Procedure,CPT
+27447,"Knee replacement, outpatient",Surgery,CPT
+DRG470,"Hip or knee replacement, inpatient stay (MS-DRG 470)",Surgery,MS-DRG

@@ -1,0 +1,89 @@
+insurer,procedure_code,procedure_label,hospital_name,price
+Excellus BCBS,27447,"Knee replacement, outpatient",Crouse Hospital,28781.67
+Excellus BCBS,27447,"Knee replacement, outpatient",Highland Hospital,22608.83
+Excellus BCBS,27447,"Knee replacement, outpatient",St. Joseph's Hospital Health Center,34990.26
+Excellus BCBS,27447,"Knee replacement, outpatient",Strong Memorial Hospital,28244.32
+Excellus BCBS,27447,"Knee replacement, outpatient",Upstate University Hospital,33613.86
+Excellus BCBS,43239,Upper GI endoscopy with biopsy,Crouse Hospital,2033.27
+Excellus BCBS,43239,Upper GI endoscopy with biopsy,Highland Hospital,1597.2
+Excellus BCBS,43239,Upper GI endoscopy with biopsy,St. Joseph's Hospital Health Center,2471.88
+Excellus BCBS,43239,Upper GI endoscopy with biopsy,Strong Memorial Hospital,1995.31
+Excellus BCBS,43239,Upper GI endoscopy with biopsy,Upstate University Hospital,2449.32
+Excellus BCBS,45378,"Colonoscopy, diagnostic",Crouse Hospital,2084.77
+Excellus BCBS,45378,"Colonoscopy, diagnostic",Highland Hospital,1637.65
+Excellus BCBS,45378,"Colonoscopy, diagnostic",St. Joseph's Hospital Health Center,2534.49
+Excellus BCBS,45378,"Colonoscopy, diagnostic",Strong Memorial Hospital,2045.85
+Excellus BCBS,45378,"Colonoscopy, diagnostic",Upstate University Hospital,2381.79
+Excellus BCBS,70450,"CT head, no contrast",Crouse Hospital,234.37
+Excellus BCBS,70450,"CT head, no contrast",Highland Hospital,184.1
+Excellus BCBS,70450,"CT head, no contrast",St. Joseph's Hospital Health Center,284.93
+Excellus BCBS,70450,"CT head, no contrast",Strong Memorial Hospital,229.99
+Excellus BCBS,70450,"CT head, no contrast",Upstate University Hospital,277.81
+Excellus BCBS,70551,"MRI brain, no contrast",Crouse Hospital,534.9
+Excellus BCBS,70551,"MRI brain, no contrast",Highland Hospital,420.18
+Excellus BCBS,70551,"MRI brain, no contrast",St. Joseph's Hospital Health Center,650.28
+Excellus BCBS,70551,"MRI brain, no contrast",Strong Memorial Hospital,524.91
+Excellus BCBS,70551,"MRI brain, no contrast",Upstate University Hospital,631.48
+Excellus BCBS,72148,"MRI lower back, no contrast",Crouse Hospital,534.9
+Excellus BCBS,72148,"MRI lower back, no contrast",Highland Hospital,420.18
+Excellus BCBS,72148,"MRI lower back, no contrast",St. Joseph's Hospital Health Center,650.28
+Excellus BCBS,72148,"MRI lower back, no contrast",Strong Memorial Hospital,524.91
+Excellus BCBS,72148,"MRI lower back, no contrast",Upstate University Hospital,631.48
+Excellus BCBS,73721,"MRI knee/leg joint, no contrast",Crouse Hospital,534.9
+Excellus BCBS,73721,"MRI knee/leg joint, no contrast",Highland Hospital,420.18
+Excellus BCBS,73721,"MRI knee/leg joint, no contrast",St. Joseph's Hospital Health Center,650.28
+Excellus BCBS,73721,"MRI knee/leg joint, no contrast",Strong Memorial Hospital,524.91
+Excellus BCBS,73721,"MRI knee/leg joint, no contrast",Upstate University Hospital,631.48
+Excellus BCBS,74177,"CT abdomen and pelvis, with contrast",Crouse Hospital,782.1
+Excellus BCBS,74177,"CT abdomen and pelvis, with contrast",Highland Hospital,614.36
+Excellus BCBS,74177,"CT abdomen and pelvis, with contrast",St. Joseph's Hospital Health Center,950.81
+Excellus BCBS,74177,"CT abdomen and pelvis, with contrast",Strong Memorial Hospital,767.5
+Excellus BCBS,74177,"CT abdomen and pelvis, with contrast",Upstate University Hospital,932.97
+Excellus BCBS,77067,Screening mammogram,Crouse Hospital,147.64
+Excellus BCBS,77067,Screening mammogram,Strong Memorial Hospital,241.93
+Excellus BCBS,DRG470,"Hip or knee replacement, inpatient stay (MS-DRG 470)",Crouse Hospital,34747.37
+MVP Health Care,27447,"Knee replacement, outpatient",Crouse Hospital,33603.99
+MVP Health Care,27447,"Knee replacement, outpatient",Highland Hospital,26425.28
+MVP Health Care,27447,"Knee replacement, outpatient",St. Joseph's Hospital Health Center,34195.36
+MVP Health Care,27447,"Knee replacement, outpatient",Strong Memorial Hospital,30924.34
+MVP Health Care,27447,"Knee replacement, outpatient",Upstate University Hospital,43593.03
+MVP Health Care,43239,Upper GI endoscopy with biopsy,Crouse Hospital,2373.94
+MVP Health Care,43239,Upper GI endoscopy with biopsy,Highland Hospital,2525.74
+MVP Health Care,43239,Upper GI endoscopy with biopsy,St. Joseph's Hospital Health Center,2415.72
+MVP Health Care,43239,Upper GI endoscopy with biopsy,Strong Memorial Hospital,3070.66
+MVP Health Care,43239,Upper GI endoscopy with biopsy,Upstate University Hospital,3176.47
+MVP Health Care,45378,"Colonoscopy, diagnostic",Crouse Hospital,2434.07
+MVP Health Care,45378,"Colonoscopy, diagnostic",Highland Hospital,2506.96
+MVP Health Care,45378,"Colonoscopy, diagnostic",St. Joseph's Hospital Health Center,2476.91
+MVP Health Care,45378,"Colonoscopy, diagnostic",Strong Memorial Hospital,3045.31
+MVP Health Care,45378,"Colonoscopy, diagnostic",Upstate University Hospital,3088.89
+MVP Health Care,70450,"CT head, no contrast",Crouse Hospital,273.64
+MVP Health Care,70450,"CT head, no contrast",Highland Hospital,288.24
+MVP Health Care,70450,"CT head, no contrast",St. Joseph's Hospital Health Center,278.45
+MVP Health Care,70450,"CT head, no contrast",Strong Memorial Hospital,350.35
+MVP Health Care,70450,"CT head, no contrast",Upstate University Hospital,360.29
+MVP Health Care,70551,"MRI brain, no contrast",Crouse Hospital,624.52
+MVP Health Care,70551,"MRI brain, no contrast",Highland Hospital,656.24
+MVP Health Care,70551,"MRI brain, no contrast",St. Joseph's Hospital Health Center,635.51
+MVP Health Care,70551,"MRI brain, no contrast",Strong Memorial Hospital,797.56
+MVP Health Care,70551,"MRI brain, no contrast",Upstate University Hospital,818.94
+MVP Health Care,72148,"MRI lower back, no contrast",Crouse Hospital,624.52
+MVP Health Care,72148,"MRI lower back, no contrast",Highland Hospital,656.24
+MVP Health Care,72148,"MRI lower back, no contrast",St. Joseph's Hospital Health Center,635.51
+MVP Health Care,72148,"MRI lower back, no contrast",Strong Memorial Hospital,797.56
+MVP Health Care,72148,"MRI lower back, no contrast",Upstate University Hospital,818.94
+MVP Health Care,73721,"MRI knee/leg joint, no contrast",Crouse Hospital,624.52
+MVP Health Care,73721,"MRI knee/leg joint, no contrast",Highland Hospital,656.24
+MVP Health Care,73721,"MRI knee/leg joint, no contrast",St. Joseph's Hospital Health Center,635.51
+MVP Health Care,73721,"MRI knee/leg joint, no contrast",Strong Memorial Hospital,797.56
+MVP Health Care,73721,"MRI knee/leg joint, no contrast",Upstate University Hospital,818.94
+MVP Health Care,74177,"CT abdomen and pelvis, with contrast",Crouse Hospital,913.14
+MVP Health Care,74177,"CT abdomen and pelvis, with contrast",Highland Hospital,965.68
+MVP Health Care,74177,"CT abdomen and pelvis, with contrast",St. Joseph's Hospital Health Center,929.21
+MVP Health Care,74177,"CT abdomen and pelvis, with contrast",Strong Memorial Hospital,1173.84
+MVP Health Care,74177,"CT abdomen and pelvis, with contrast",Upstate University Hospital,1209.96
+MVP Health Care,77067,Screening mammogram,Crouse Hospital,172.38
+MVP Health Care,77067,Screening mammogram,Highland Hospital,449.17
+MVP Health Care,77067,Screening mammogram,St. Joseph's Hospital Health Center,184.65
+MVP Health Care,77067,Screening mammogram,Strong Memorial Hospital,449.17
+MVP Health Care,77067,Screening mammogram,Upstate University Hospital,435.46

@@ -1,0 +1,20 @@
+insurer,procedure_code,procedure_label,n_hospitals,lowest,highest,highest_to_lowest,lowest_hospital,highest_hospital
+Excellus BCBS,27447,"Knee replacement, outpatient",5,22608.83,34990.26,1.55,Highland Hospital,St. Joseph's Hospital Health Center
+Excellus BCBS,43239,Upper GI endoscopy with biopsy,5,1597.2,2471.88,1.55,Highland Hospital,St. Joseph's Hospital Health Center
+Excellus BCBS,45378,"Colonoscopy, diagnostic",5,1637.65,2534.49,1.55,Highland Hospital,St. Joseph's Hospital Health Center
+Excellus BCBS,70450,"CT head, no contrast",5,184.1,284.93,1.55,Highland Hospital,St. Joseph's Hospital Health Center
+Excellus BCBS,70551,"MRI brain, no contrast",5,420.18,650.28,1.55,Highland Hospital,St. Joseph's Hospital Health Center
+Excellus BCBS,72148,"MRI lower back, no contrast",5,420.18,650.28,1.55,Highland Hospital,St. Joseph's Hospital Health Center
+Excellus BCBS,73721,"MRI knee/leg joint, no contrast",5,420.18,650.28,1.55,Highland Hospital,St. Joseph's Hospital Health Center
+Excellus BCBS,74177,"CT abdomen and pelvis, with contrast",5,614.36,950.81,1.55,Highland Hospital,St. Joseph's Hospital Health Center
+Excellus BCBS,77067,Screening mammogram,2,147.64,241.93,1.64,Crouse Hospital,Strong Memorial Hospital
+Excellus BCBS,DRG470,"Hip or knee replacement, inpatient stay (MS-DRG 470)",1,34747.37,34747.37,1.0,Crouse Hospital,Crouse Hospital
+MVP Health Care,27447,"Knee replacement, outpatient",5,26425.28,43593.03,1.65,Highland Hospital,Upstate University Hospital
+MVP Health Care,43239,Upper GI endoscopy with biopsy,5,2373.94,3176.47,1.34,Crouse Hospital,Upstate University Hospital
+MVP Health Care,45378,"Colonoscopy, diagnostic",5,2434.07,3088.89,1.27,Crouse Hospital,Upstate University Hospital
+MVP Health Care,70450,"CT head, no contrast",5,273.64,360.29,1.32,Crouse Hospital,Upstate University Hospital
+MVP Health Care,70551,"MRI brain, no contrast",5,624.52,818.94,1.31,Crouse Hospital,Upstate University Hospital
+MVP Health Care,72148,"MRI lower back, no contrast",5,624.52,818.94,1.31,Crouse Hospital,Upstate University Hospital
+MVP Health Care,73721,"MRI knee/leg joint, no contrast",5,624.52,818.94,1.31,Crouse Hospital,Upstate University Hospital
+MVP Health Care,74177,"CT abdomen and pelvis, with contrast",5,913.14,1209.96,1.33,Crouse Hospital,Upstate University Hospital
+MVP Health Care,77067,Screening mammogram,5,172.38,449.17,2.61,Crouse Hospital,Highland Hospital

@@ -1,0 +1,51 @@
+hospital_name,procedure_code,commercial_median,medicare_adv_median,commercial_to_ma
+Crouse Hospital,27447,31192.83,16026.32,1.95
+Crouse Hospital,43239,2203.61,1132.18,1.95
+Crouse Hospital,45378,2259.42,1160.85,1.95
+Crouse Hospital,70450,234.37,130.5,1.8
+Crouse Hospital,70551,534.9,297.84,1.8
+Crouse Hospital,72148,534.9,297.84,1.8
+Crouse Hospital,73721,534.9,297.84,1.8
+Crouse Hospital,74177,782.1,435.49,1.8
+Crouse Hospital,77067,178.68,82.21,2.17
+Crouse Hospital,DRG470,34747.37,19199.17,1.81
+Highland Hospital,27447,25633.03,16498.53,1.55
+Highland Hospital,43239,1922.78,1161.83,1.65
+Highland Hospital,45378,1971.48,1165.19,1.69
+Highland Hospital,70450,244.26,133.92,1.82
+Highland Hospital,70551,555.23,305.64,1.82
+Highland Hospital,72148,555.23,305.64,1.82
+Highland Hospital,73721,555.23,305.64,1.82
+Highland Hospital,74177,820.33,446.9,1.84
+Highland Hospital,77067,449.17,89.21,5.03
+Highland Hospital,DRG470,21988.84,20399.98,1.08
+St. Joseph's Hospital Health Center,27447,34592.81,16334.03,2.12
+St. Joseph's Hospital Health Center,43239,2471.88,1153.91,2.14
+St. Joseph's Hospital Health Center,45378,2534.49,1183.14,2.14
+St. Joseph's Hospital Health Center,70450,977.9,135.02,7.24
+St. Joseph's Hospital Health Center,70551,1661.8,308.15,5.39
+St. Joseph's Hospital Health Center,72148,1685.54,308.15,5.47
+St. Joseph's Hospital Health Center,73721,1865.85,308.15,6.06
+St. Joseph's Hospital Health Center,74177,2298.8,450.56,5.1
+St. Joseph's Hospital Health Center,77067,342.72,89.54,3.83
+St. Joseph's Hospital Health Center,DRG470,33115.36,17817.7,1.86
+Strong Memorial Hospital,27447,30103.23,16498.53,1.82
+Strong Memorial Hospital,43239,2242.65,1178.33,1.9
+Strong Memorial Hospital,45378,2299.45,1178.22,1.95
+Strong Memorial Hospital,70450,308.42,134.92,2.29
+Strong Memorial Hospital,70551,683.62,307.28,2.22
+Strong Memorial Hospital,72148,666.66,307.28,2.17
+Strong Memorial Hospital,73721,702.26,307.28,2.29
+Strong Memorial Hospital,74177,1033.04,451.66,2.29
+Strong Memorial Hospital,77067,449.17,93.46,4.81
+Strong Memorial Hospital,DRG470,33487.63,26531.86,1.26
+Upstate University Hospital,27447,38238.78,15682.86,2.44
+Upstate University Hospital,43239,1718.38,1142.75,1.5
+Upstate University Hospital,45378,2709.5,1111.25,2.44
+Upstate University Hospital,70450,1861.76,129.62,14.36
+Upstate University Hospital,70551,3200.44,294.62,10.86
+Upstate University Hospital,72148,3200.44,294.62,10.86
+Upstate University Hospital,73721,3983.08,294.62,13.52
+Upstate University Hospital,74177,2160.42,435.29,4.96
+Upstate University Hospital,77067,491.4,444.91,1.1
+Upstate University Hospital,DRG470,45949.68,21530.98,2.13

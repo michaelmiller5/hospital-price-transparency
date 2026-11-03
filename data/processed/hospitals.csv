@@ -1,0 +1,7 @@
+hospital_key,hospital_name,city,health_system,role,source_file
+crouse,Crouse Hospital,Syracuse,Crouse Health,comparison,crouse_filtered.csv
+st_josephs,St. Joseph's Hospital Health Center,Syracuse,Trinity Health,comparison,st_josephs_filtered.csv
+upstate,Upstate University Hospital,Syracuse,SUNY Upstate,comparison,upstate_filtered.csv
+strong,Strong Memorial Hospital,Rochester,URMC,comparison,strong_memorial_filtered.csv
+highland,Highland Hospital,Rochester,URMC,comparison,highland_filtered.csv
+rochester_general,Rochester General Hospital,Rochester,Rochester Regional Health,transparency_finding,rochester_general_filtered.csv

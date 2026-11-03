@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hospital Price Explorer: Syracuse and Rochester, NY</title>
+<meta name="description" content="Compare negotiated hospital prices for 10 common procedures at five Syracuse and Rochester hospitals, by insurer and contract type, from 2026 price transparency files.">
+<style>
+.viz-root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface-1: #fcfcfb;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11,11,11,0.10);
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --wash: rgba(42,120,214,0.08);
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) .viz-root {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface-1: #1a1a19;
+    --text-primary: #f0efec;
+    --text-secondary: #c3c2b7;
+    --text-muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255,255,255,0.10);
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --wash: rgba(57,135,229,0.12);
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+.viz-root {
+  background: var(--page); color: var(--text-primary);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  min-height: 100vh; padding: 32px 20px 48px;
+}
+.wrap { max-width: 1080px; margin: 0 auto; }
+header h1 { font-size: 28px; line-height: 1.2; margin: 0 0 8px; font-weight: 650; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--text-secondary); max-width: 760px; }
+.byline { margin-top: 10px; font-size: 13px; color: var(--text-muted); }
+.byline a, footer a, .note a { color: inherit; }
+.card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 20px; }
+.findings { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.finding .big { font-size: 26px; font-weight: 600; line-height: 1.15; }
+.finding .txt { color: var(--text-secondary); font-size: 14px; margin-top: 6px; }
+.controls { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; margin-top: 24px; }
+.control label { display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+select, .seg button {
+  font: inherit; font-size: 14px; color: var(--text-primary); background: var(--surface-1);
+  border: 1px solid var(--axis); border-radius: 8px; padding: 7px 10px;
+}
+select { min-width: 200px; }
+.seg { display: inline-flex; border: 1px solid var(--axis); border-radius: 8px; overflow: hidden; }
+.seg button { border: 0; border-radius: 0; cursor: pointer; padding: 7px 12px; }
+.seg button + button { border-left: 1px solid var(--axis); }
+.seg button[aria-pressed="true"] { background: var(--wash); font-weight: 600; }
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.tile .label { font-size: 13px; color: var(--text-secondary); }
+.tile .value { font-size: 24px; font-weight: 600; margin-top: 2px; }
+.tile .sub { font-size: 13px; color: var(--text-muted); }
+.chart-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+.chart-head h2 { font-size: 17px; margin: 0; font-weight: 600; }
+.legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; color: var(--text-secondary); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.medkey { width: 2px; height: 14px; background: var(--text-primary); display: inline-block; }
+svg text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+.tick text { fill: var(--text-muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.rowlab { fill: var(--text-primary); font-size: 14px; font-weight: 550; }
+.rowsub { fill: var(--text-muted); font-size: 12px; }
+.medlab { fill: var(--text-primary); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.medsub { fill: var(--text-muted); font-size: 12px; }
+circle.c { stroke: var(--surface-1); stroke-width: 2; cursor: pointer; }
+circle.c:hover, circle.c:focus { stroke: var(--text-primary); outline: none; }
+.empty { fill: var(--text-muted); font-size: 13px; }
+#tip {
+  font: 13px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+  position: fixed; pointer-events: none; z-index: 10; display: none; max-width: 300px;
+  background: var(--surface-1); color: var(--text-primary); border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); font-size: 13px;
+}
+#tip .v { font-size: 16px; font-weight: 650; }
+#tip .s { color: var(--text-secondary); }
+#tip .k { display: inline-block; width: 12px; height: 2px; vertical-align: middle; margin-right: 6px; }
+.tablebar { display: flex; justify-content: flex-end; margin-top: 10px; }
+.linkbtn { font: inherit; font-size: 13px; background: none; border: 0; color: var(--text-secondary); text-decoration: underline; cursor: pointer; padding: 0; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { color: var(--text-secondary); font-weight: 600; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.note { color: var(--text-secondary); font-size: 14px; }
+.note h3 { color: var(--text-primary); font-size: 15px; margin: 0 0 6px; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+footer { margin-top: 24px; font-size: 13px; color: var(--text-muted); }
+footer ul { padding-left: 18px; margin: 6px 0; }
+@media (max-width: 760px) {
+  .findings, .tiles, .cols { grid-template-columns: 1fr 1fr; }
+  header h1 { font-size: 23px; }
+}
+@media (max-width: 480px) { .findings, .tiles, .cols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="viz-root">
+<div class="wrap">
+
+<header>
+  <h1>What does the same procedure cost at Syracuse and Rochester hospitals?</h1>
+  <p>Negotiated hospital prices for 10 common procedures at five hospitals, taken from each hospital's own 2026 price transparency file. Pick a procedure, an insurance type and an insurer to compare.</p>
+  <div class="byline">By Michael Miller · <a href="https://github.com/michaelmiller5/hospital-price-transparency">Code, data and methods on GitHub</a></div>
+</header>
+
+<section class="card findings" aria-label="Key findings">
+  <div class="finding"><div class="big">It depends on the insurer</div><div class="txt">For MRI and CT head, the highest commercial contract is 25 to 28 times the lowest for the same scan. The contract matters more than the hospital.</div></div>
+  <div class="finding"><div class="big">11 of 12</div><div class="txt">comparisons where percent-of-list-price contracts cost more than fixed-fee contracts at the same hospital, by 1.9 to 7.5 times.</div></div>
+  <div class="finding"><div class="big">1.3 to 1.5 times</div><div class="txt">the gap between the most and least expensive hospital on fixed-fee contracts, for 8 of 10 procedures (1.5 to 1.9 times depending on how two Rochester hospitals' duplicate price lists are handled).</div></div>
+</section>
+
+<div class="controls" role="group" aria-label="Filters">
+  <div class="control"><label for="proc">Procedure</label><select id="proc"></select></div>
+  <div class="control"><label for="ptype">Insurance type</label><select id="ptype"></select></div>
+  <div class="control"><label for="ins">Insurer</label><select id="ins"></select></div>
+  <div class="control"><label id="methlab">Contract type</label>
+    <div class="seg" id="meth" role="group" aria-labelledby="methlab">
+      <button type="button" data-v="all" aria-pressed="true">All</button>
+      <button type="button" data-v="fixed" aria-pressed="false">Fixed fee</button>
+      <button type="button" data-v="pct" aria-pressed="false">Percent of list price</button>
+    </div>
+  </div>
+</div>
+
+<section class="card tiles" aria-live="polite">
+  <div class="tile"><div class="label">Lowest median price</div><div class="value" id="t-low">-</div><div class="sub" id="t-low-h"></div></div>
+  <div class="tile"><div class="label">Highest median price</div><div class="value" id="t-high">-</div><div class="sub" id="t-high-h"></div></div>
+  <div class="tile"><div class="label">Highest vs lowest hospital</div><div class="value" id="t-ratio">-</div><div class="sub" id="t-ratio-sub">comparing hospital medians</div></div>
+  <div class="tile"><div class="label">Contracts shown</div><div class="value" id="t-n">-</div><div class="sub" id="t-ins"></div></div>
+</section>
+
+<section class="card">
+  <div class="chart-head">
+    <h2 id="chart-title">Price by hospital</h2>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--series-1)"></i>Fixed fee or case rate</span>
+      <span><i class="dot" style="background:var(--series-2)"></i>Percent of hospital list price</span>
+      <span><i class="medkey"></i>Hospital median</span>
+    </div>
+  </div>
+  <svg id="chart" role="img" aria-labelledby="chart-title" width="100%"></svg>
+  <div class="note" style="font-size:13px">Each dot is one insurer plan's published price. The price axis is logarithmic, so equal spacing means equal multiples (2x, 10x). Hover or focus a dot for details.</div>
+  <div class="tablebar"><button class="linkbtn" id="tbtn" type="button" aria-expanded="false" aria-controls="tbl">Show as table</button></div>
+  <div id="tbl" hidden></div>
+</section>
+
+<section class="card cols">
+  <div class="note">
+    <h3>Why some prices are so high</h3>
+    Some contracts pay the hospital a percentage of its list price instead of a fixed fee. When the list price is high (Upstate lists an MRI brain at $8,841), those contracts produce very large dollar amounts. Among contracts that publish a dollar price, they appear only at Upstate and St. Joseph's. The dollar prices that Excellus and MVP publish are fixed fees at all five hospitals, with one exception: MVP's screening mammogram contracts at Upstate.
+  </div>
+  <div class="note">
+    <h3>Not in the comparison: Rochester General</h3>
+    Rochester General's 2026 file lists an insurer dollar price for these outpatient services from one insurer (Aetna, six imaging services) or from none (colonoscopy, endoscopy, outpatient knee replacement). Other insurers appear as formulas. Because a fair comparison is not possible, it is reported as a transparency gap instead.
+  </div>
+</section>
+
+<footer>
+  <strong>About the data.</strong> Hospital facility prices only (not physician fees), for the base service without billing modifiers. Prices are the negotiated rates each hospital published, not amounts paid on claims or patient out-of-pocket costs. Contracts are counted equally because the files do not say how many people each plan covers. For percent-of-list-price contracts, the dollar figure is the hospital's own estimate. Every cleaning decision is documented in the repository.
+  <ul id="sources"></ul>
+</footer>
+
+</div>
+</div>
+<div id="tip" role="tooltip"></div>
+
+<script>
+const DATA = /*__DATA__*/null;
+(function () {
+  "use strict";
+  const H = DATA.hospitals.filter(h => h.role === "comparison");
+  const HBY = Object.fromEntries(DATA.hospitals.map(h => [h.key, h]));
+  const PROC = DATA.procedures;
+  // contract row: [hospital, procedure, plan type, insurer, plan, price, pct_of_charges, n_lines]
+  const C = DATA.contracts.filter(r => HBY[r[0]].role === "comparison");
+  const PTYPES = ["Commercial", "Medicare Advantage", "Medicaid / Essential Plan", "Individual / Exchange", "Military (TRICARE)", "Other"];
+  const state = { proc: "70551", ptype: "Commercial", ins: "", meth: "all", table: false };
+
+  const $ = id => document.getElementById(id);
+  const money = v => "$" + (v >= 10000 ? Math.round(v).toLocaleString("en-US") : v.toLocaleString("en-US", { minimumFractionDigits: v < 1000 ? 2 : 0, maximumFractionDigits: v < 1000 ? 2 : 0 }));
+  const short = v => v >= 1000 ? "$" + (v / 1000).toLocaleString("en-US", { maximumFractionDigits: 1 }) + "K" : "$" + Math.round(v);
+  const median = a => { const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length ? (s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2) : NaN; };
+  const el = (tag, attrs, text) => { const n = document.createElementNS("http://www.w3.org/2000/svg", tag); for (const k in attrs) n.setAttribute(k, attrs[k]); if (text != null) n.textContent = text; return n; };
+  const opt = (sel, v, t) => { const o = document.createElement("option"); o.value = v; o.textContent = t; sel.appendChild(o); };
+
+  // Controls
+  for (const p of PROC) opt($("proc"), p.code, p.label + (p.code.startsWith("DRG") ? "" : " (CPT " + p.code + ")"));
+  for (const t of PTYPES) if (C.some(r => r[2] === t)) opt($("ptype"), t, t);
+  $("proc").value = state.proc; $("ptype").value = state.ptype;
+
+  function fillInsurers() {
+    const sel = $("ins"), keep = state.ins;
+    sel.textContent = "";
+    opt(sel, "", "All insurers");
+    const names = [...new Set(C.filter(r => r[1] === state.proc && r[2] === state.ptype).map(r => r[3]))].sort();
+    for (const n of names) opt(sel, n, n);
+    state.ins = names.includes(keep) ? keep : "";
+    sel.value = state.ins;
+  }
+  $("proc").addEventListener("change", e => { state.proc = e.target.value; fillInsurers(); render(); });
+  $("ptype").addEventListener("change", e => { state.ptype = e.target.value; fillInsurers(); render(); });
+  $("ins").addEventListener("change", e => { state.ins = e.target.value; render(); });
+  $("meth").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    state.meth = b.dataset.v;
+    for (const x of $("meth").querySelectorAll("button")) x.setAttribute("aria-pressed", String(x === b));
+    render();
+  });
+  $("tbtn").addEventListener("click", () => {
+    state.table = !state.table;
+    $("tbl").hidden = !state.table;
+    $("tbtn").textContent = state.table ? "Hide table" : "Show as table";
+    $("tbtn").setAttribute("aria-expanded", String(state.table));
+  });
+
+  // Sources
+  for (const h of DATA.hospitals) {
+    const li = document.createElement("li"), a = document.createElement("a");
+    a.href = h.url; a.textContent = h.name; a.rel = "noopener";
+    li.appendChild(a);
+    li.appendChild(document.createTextNode(", " + h.city + ". File last updated " + h.updated + "."));
+    $("sources").appendChild(li);
+  }
+
+  // Tooltip
+  const tip = $("tip");
+  function showTip(evt, r) {
+    tip.textContent = "";
+    const add = (cls, txt) => { const d = document.createElement("div"); if (cls) d.className = cls; d.textContent = txt; tip.appendChild(d); return d; };
+    add("v", money(r[5]));
+    const k = document.createElement("span"); k.className = "k"; k.style.background = r[6] ? "var(--series-2)" : "var(--series-1)";
+    const d = add("", r[3]); d.prepend(k);
+    add("s", r[4]);
+    add("s", HBY[r[0]].name);
+    add("s", r[6] ? "Percent of hospital list price (hospital's dollar estimate)" : "Fixed fee or case rate");
+    if (r[7] > 1) add("s", "Median of " + r[7] + " listed rates for this plan");
+    tip.style.display = "block";
+    let x, y;
+    if (evt.clientX != null && evt.type !== "focus") { x = evt.clientX; y = evt.clientY; }
+    else { const b = evt.target.getBoundingClientRect(); x = b.left + b.width / 2; y = b.top; }
+    const w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(window.innerWidth - w - 8, Math.max(8, x + 14)) + "px";
+    tip.style.top = (y - h - 12 < 8 ? y + 16 : y - h - 12) + "px";
+  }
+  const hideTip = () => { tip.style.display = "none"; };
+
+  function render() {
+    const base = C.filter(r => r[1] === state.proc && r[2] === state.ptype);
+    const rows = base.filter(r => (!state.ins || r[3] === state.ins) &&
+      (state.meth === "all" || (state.meth === "pct" ? r[6] === 1 : r[6] === 0)));
+    const label = PROC.find(p => p.code === state.proc).label;
+    // Keep proper names (Medicare, Medicaid, TRICARE) capitalized; lowercase only generic words.
+    const ptypeText = state.ptype === "Commercial" || state.ptype === "Other" ? state.ptype.toLowerCase() : state.ptype;
+    $("chart-title").textContent = label + ": " + ptypeText + " prices by hospital" + (state.ins ? ", " + state.ins : "");
+
+    // Tiles
+    const meds = H.map(h => ({ h, v: median(rows.filter(r => r[0] === h.key).map(r => r[5])) })).filter(m => !isNaN(m.v));
+    meds.sort((a, b) => a.v - b.v);
+    if (meds.length) {
+      $("t-low").textContent = money(meds[0].v); $("t-low-h").textContent = meds[0].h.name;
+      const hi = meds[meds.length - 1];
+      $("t-high").textContent = money(hi.v); $("t-high-h").textContent = hi.h.name;
+      $("t-ratio").textContent = meds.length > 1 ? (hi.v / meds[0].v).toFixed(1) + "x" : "-";
+      // When percent-of-list-price contracts are in view, also show the fixed-fee-only gap
+      const fx = H.map(h => median(rows.filter(r => r[0] === h.key && r[6] === 0).map(r => r[5]))).filter(v => !isNaN(v));
+      $("t-ratio-sub").textContent = rows.some(r => r[6] === 1) && fx.length > 1
+        ? (Math.max(...fx) / Math.min(...fx)).toFixed(1) + "x on fixed-fee contracts only"
+        : "comparing hospital medians";
+    } else { for (const id of ["t-low", "t-high", "t-ratio"]) $(id).textContent = "-"; $("t-low-h").textContent = $("t-high-h").textContent = "No prices for this selection"; }
+    $("t-n").textContent = rows.length.toLocaleString("en-US");
+    const nIns = new Set(rows.map(r => r[3])).size;
+    $("t-ins").textContent = nIns + (nIns === 1 ? " insurer" : " insurers");
+
+    // Chart geometry
+    const svg = $("chart"); svg.textContent = "";
+    const W = 1040, left = 210, right = 150, top = 28, rowH = 64, Hh = top + rowH * H.length + 8;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + Hh);
+    const domainRows = base.length ? base : rows;
+    let lo = Math.min(...domainRows.map(r => r[5])), hi = Math.max(...domainRows.map(r => r[5]));
+    if (!isFinite(lo)) { lo = 100; hi = 1000; }
+    const l0 = Math.log10(lo / 1.25), l1 = Math.log10(hi * 1.25);
+    const x = v => left + (Math.log10(v) - l0) / (l1 - l0) * (W - left - right);
+
+    // Grid and ticks: 1-2-5 sequence
+    const tickSet = mults => { const out = []; for (let e = Math.floor(l0); e <= Math.ceil(l1); e++) for (const m of mults) { const t = m * Math.pow(10, e); if (Math.log10(t) >= l0 && Math.log10(t) <= l1) out.push(t); } return out; };
+    let ticks = tickSet([1, 2, 5]);
+    if (ticks.length < 4) ticks = tickSet([1, 1.5, 2, 3, 4, 5, 7]);  // narrow ranges need finer ticks
+    const g = el("g", { class: "tick" });
+    for (const t of ticks) {
+      g.appendChild(el("line", { x1: x(t), x2: x(t), y1: top - 6, y2: Hh - 8, stroke: "var(--grid)", "stroke-width": 1 }));
+      g.appendChild(el("text", { x: x(t), y: top - 12, "text-anchor": "middle" }, short(t)));
+    }
+    svg.appendChild(g);
+
+    H.forEach((h, i) => {
+      const cy = top + rowH * i + rowH / 2;
+      svg.appendChild(el("line", { x1: left, x2: W - right, y1: top + rowH * (i + 1), y2: top + rowH * (i + 1), stroke: "var(--grid)", "stroke-width": 1 }));
+      svg.appendChild(el("text", { x: 0, y: cy - 2, class: "rowlab" }, h.name.replace(" Hospital Health Center", "").replace(" University Hospital", "").replace(" Hospital", "")));
+      svg.appendChild(el("text", { x: 0, y: cy + 15, class: "rowsub" }, h.city + " · " + h.system));
+      const pts = rows.filter(r => r[0] === h.key);
+      if (!pts.length) { svg.appendChild(el("text", { x: left + 4, y: cy + 4, class: "empty" }, "No published price for this selection")); return; }
+      // Deterministic vertical spread so overlapping prices stay visible
+      const offs = [0, -9, 9, -18, 18, -4.5, 4.5, -13.5, 13.5];
+      pts.forEach((r, j) => {
+        const c = el("circle", { cx: x(r[5]), cy: cy + offs[j % offs.length], r: 5.5, class: "c", fill: r[6] ? "var(--series-2)" : "var(--series-1)", tabindex: 0,
+          "aria-label": r[3] + ", " + r[4] + ", " + money(r[5]) + ", " + (r[6] ? "percent of list price" : "fixed fee") });
+        c.addEventListener("pointermove", e => showTip(e, r));
+        c.addEventListener("pointerleave", hideTip);
+        c.addEventListener("focus", e => showTip(e, r));
+        c.addEventListener("blur", hideTip);
+        svg.appendChild(c);
+      });
+      const m = median(pts.map(r => r[5]));
+      svg.appendChild(el("line", { x1: x(m), x2: x(m), y1: cy - 24, y2: cy + 24, stroke: "var(--text-primary)", "stroke-width": 2, "stroke-linecap": "round", "pointer-events": "none" }));
+      svg.appendChild(el("text", { x: W - right + 16, y: cy - 2, class: "medlab" }, money(m)));
+      svg.appendChild(el("text", { x: W - right + 16, y: cy + 15, class: "medsub" }, pts.length + (pts.length === 1 ? " contract" : " contracts")));
+    });
+
+    // Table view
+    const tbl = $("tbl"); tbl.textContent = "";
+    const t = document.createElement("table"), thead = t.createTHead(), hr = thead.insertRow();
+    for (const [txt, num] of [["Hospital"], ["Insurer"], ["Plan"], ["Contract type"], ["Price", 1]]) { const th = document.createElement("th"); th.textContent = txt; if (num) th.className = "num"; hr.appendChild(th); }
+    const tb = t.createTBody();
+    for (const r of [...rows].sort((a, b) => a[0].localeCompare(b[0]) || a[5] - b[5])) {
+      const tr = tb.insertRow();
+      for (const [v, num] of [[HBY[r[0]].name], [r[3]], [r[4]], [r[6] ? "Percent of list price" : "Fixed fee or case rate"], [money(r[5]), 1]]) { const td = tr.insertCell(); td.textContent = v; if (num) td.className = "num"; }
+    }
+    tbl.appendChild(t);
+  }
+
+  fillInsurers();
+  render();
+})();
+</script>
+</body>
+</html>
